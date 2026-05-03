@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="Registration.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <h2 align="center">Air Quality Tracker</h2>
+        <h1>Registration</h1>
+        <form id="registrationForm">
+            <!-- Name -->
+            <div id="input-box">
+                <div id="input-field">
+                    <input type="text" id="name" placeholder="Name" required>
+                </div>
+            </div>
+
+            <!-- Username -->
+            <div id="input-box">
+                <div id="input-field">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div id="input-box">
+                <div id="input-field">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <i class="bx bxs-envelope"></i>
+                </div>
+            </div>
+
+            <!-- Phone Number -->
+            <div id="input-box">
+                <div id="input-field">
+                    <input type="number" id="phone" placeholder="Phone Number" required>
+                    <i class="bx bxs-phone"></i>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div id="input-box">
+                <div id="input-field">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <i class='bx bx-show toggle-password' onclick="togglePassword('password')"></i>
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div id="input-box">
+                <div id="input-field">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <i class='bx bx-show toggle-password' onclick="togglePassword('confirmPassword')"></i>
+                </div>
+            </div>
+
+            <!-- Checkbox -->
+            <label>
+                <input type="checkbox" id="agree" required> I hereby declare that the above information provided is true and correct
+            </label>
+
+            <!-- Submit Button -->
+            <button type="submit" id="btn">Register</button>
+
+            <!-- Login Link -->
+            <div id="register-link">
+                <p align="center">Already have an account? <a href="Login1.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript Validation -->
+    <script>
+
+        // JavaScript for toggling password visibility
+function togglePassword(fieldId) {
+    const passwordField = document.getElementById(fieldId);
+    const icon = passwordField.nextElementSibling;
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        icon.classList.remove('bx-show');
+        icon.classList.add('bx-hide');
+    } else {
+        passwordField.type = "password";
+        icon.classList.remove('bx-hide');
+        icon.classList.add('bx-show');
+    }
+}
+
+// JavaScript form validation
+document.getElementById("registrationForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form values
+    const name = document.getElementById("name").value.trim();
+    const username = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const agree = document.getElementById("agree").checked;
+
+    // Regular Expressions for Validation
+    const nameRegex = /^[A-Za-z\s]+$/;
+    const usernameRegex = /^[a-zA-Z0-9_]{3,15}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9]{10}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+
+    // Validation Checks
+    if (!nameRegex.test(name)) {
+        alert("Please enter a valid name (letters and spaces only).");
+        return;
+    }
+
+    if (!usernameRegex.test(username)) {
+        alert("Username should be 3-15 characters long and can contain letters, numbers, and underscores.");
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    if (!phoneRegex.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+    }
+
+    if (!passwordRegex.test(password)) {
+        alert("Password must be at least 8 characters long and include at least one letter and one number.");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    if (!agree) {
+        alert("Please agree to the terms and conditions.");
+        return;
+    }
+
+    // If all validations pass
+    alert("Registration Successful!");
+    document.getElementById("registrationForm").reset(); // Reset form
+});
+
+    </script>
+
+</body>
+</html>

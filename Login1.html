@@ -1,0 +1,283 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTSV Air Quality Tracker</title>
+    <link rel="stylesheet" href="Login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    
+</style>
+<body>
+    <div id="wrapper">
+        <form action="">
+            <h2 align="center" >Air Quality Tracker</h2>
+            <div id="input-box">
+                <input type="text" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div id="input-box">
+                <input type="password" placeholder="Password" required>
+
+            </div>
+            <div id="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" id="btn">Log in</button>
+            <div id="register-link">
+                <p>Don't have an account?<a href="Registration.html"> Register</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTSV Air Quality Tracker</title>
+    <link rel="stylesheet" href="Login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <form id="loginForm">
+            <h2 align="center">Air Quality Tracker</h2>
+            
+            Username Input
+            <div id="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            
+             Password Input with Toggle 
+            <div id="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class='bx bx-show toggle-password' onclick="togglePassword()"></i>
+            </div>
+            
+            Remember Me and Forgot Password Links 
+            <div id="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            
+             Login Button 
+            <button type="submit" id="btn">Log in</button>
+            
+             Registration Link 
+            <div id="register-link">
+                <p>Don't have an account? <a href="Registration.html">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+     JavaScript for Password Toggle and Validation --
+    <script>
+        // Function to toggle password visibility
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const toggleIcon = document.querySelector(".toggle-password");
+            
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove('bx-show');
+                toggleIcon.classList.add('bx-hide');
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove('bx-hide');
+                toggleIcon.classList.add('bx-show');
+            }
+        }
+
+        // Form validation on submit
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission for validation
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // Check if fields are empty
+            if (username === "" || password === "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            // Basic password conditions (minimum 6 characters, one uppercase, one lowercase, one digit)
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                alert("Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, and a digit.");
+                return;
+            }
+
+            // If all validations pass
+            alert("Login Successful!");
+            document.getElementById("loginForm").reset();
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTSV Air Quality Tracker</title>
+    <link rel="stylesheet" href="Login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <form id="loginForm">
+            <h2 align="center">Air Quality Tracker</h2>
+            
+             Username Input --
+            <div id="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            
+            <-- Password Input with Toggle --
+            <div id="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class='bx bx-show toggle-password' onclick="togglePassword()"></i>
+            </div>
+            
+            -- Remember Me and Forgot Password Links --
+            <div id="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="forgot.html" onclick="openForgotPasswordModal()">Forgot Password?</a>
+            </div>
+            
+            -- Login Button --
+            <button type="submit" id="btn">Log in</button>
+            
+            -- Registration Link --
+            <div id="register-link">
+                <p>Don't have an account? <a href="Registration.html">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    -- Forgot Password Modal -
+    
+            <script>
+        // Form validation on submit
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (username === "" || password === "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                alert("Password must be at least 8 characters long, with an uppercase letter, a lowercase letter, and a digit.");
+                return;
+            }
+
+            alert("Login Successful!");
+            document.getElementById("loginForm").reset();
+        });
+    </script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTSV Air Quality Tracker</title>
+    <link rel="stylesheet" href="Login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <form id="loginForm">
+            <h2 align="center">Air Quality Tracker</h2>
+            
+            <!-- Username Input -->
+            <div id="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            
+            <!-- Password Input with Toggle -->
+            <div id="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class='bx bx-show toggle-password' id="togglePassword"></i>
+            </div>
+            
+            <!-- Remember Me and Forgot Password Links -->
+            <div id="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="forgot.html">Forgot Password?</a>
+            </div>
+            
+            <!-- Login Button -->
+            <button type="submit" id="btn">Log in</button>
+            
+            <!-- Registration Link -->
+            <div id="register-link">
+                <p>Don't have an account? <a href="Registration.html">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript for Password Toggle and Validation -->
+    <script>
+        // Function to toggle password visibility
+        document.getElementById("togglePassword").addEventListener("click", function() {
+            const passwordField = document.getElementById("password");
+            const toggleIcon = this;
+            
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove('bx-show');
+                toggleIcon.classList.add('bx-hide');
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove('bx-hide');
+                toggleIcon.classList.add('bx-show');
+            }
+        });
+
+        // Form validation on submit
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (username === "" || password === "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                alert("Password must be at least 8 characters long, with an uppercase letter, a lowercase letter, a digit, and a special character.");
+                return;
+            }
+
+            alert("Login Successful!");
+            document.getElementById("loginForm").reset();
+        });
+    </script>
+</body>
+</html>
+
